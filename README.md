@@ -147,6 +147,12 @@ conda create -n tensorflow
 source activate tensorflow   
 ```
 
+
+Add these two lines to the end of ~/.bashrc:
+export LD_LIBRARY_PATH="/home/kelvinson/.mujoco/mjpro150/bin:${LD_LIBRARY_PATH}"
+export LD_LIBRARY_PATH="/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}"
+
+
 8. Install tensorflow with GPU support for python 3.6    
 ``` bash
 pip install tensorflow-gpu
