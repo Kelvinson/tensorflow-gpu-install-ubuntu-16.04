@@ -76,11 +76,11 @@ sudo apt-get update
 ```
 
 1. Installing kinds of building essentials
-1.1 Install apt-get deps  
+- Install apt-get deps  
 ``` bash
 sudo apt-get install openjdk-8-jdk git python-dev python3-dev python-numpy python3-numpy build-essential python-pip python3-pip python-virtualenv swig python-wheel libcurl3-dev   
 ```
-1.2 Install essentials for gym environment:
+- Install essentials for gym environment:
 ```bash
 sudo apt-get install -y python-numpy python-dev cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev python-opengl libboost-all-dev libsdl2-dev swig
 ```
@@ -169,24 +169,24 @@ conda create -n gym python=3.5.2
 ``` bash
 source activate gym
 ```
-
-8.1 Install mujuco(do it as the official docs said, it is easy)
+8. Istall 
+- Install mujuco(do it as the official docs said, it is easy)
 Note to Add these two lines to the end of ~/.bashrc:
 ```
 export LD_LIBRARY_PATH="/home/kelvinson/.mujoco/mjpro150/bin:${LD_LIBRARY_PATH}"
 export LD_LIBRARY_PATH="/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}"
 ```
-8.2 Intall the esentials of mujoco-py
-# clone gym to local: inside gym env, pip install --ignore-installed pip (required by gym )
-# follow the [docker file](https://github.com/openai/mujoco-py/blob/master/Dockerfile)to install perquisites of mujoco-py. (I have simplified it to the file build_dependencies in the main repo)
-# now let's install the gym env:
+- Intall the esentials of mujoco-py
+ clone gym to local: inside gym env, pip install --ignore-installed pip (required by gym )
+follow the [docker file](https://github.com/openai/mujoco-py/blob/master/Dockerfile)to install perquisites of mujoco-py. (I have simplified it to the file build_dependencies in the main repo) \
+- now let's install the gym env:
 ```bash
  LD_LIBRARY_PATH=$HOME/.mujoco/mjpro150/bin pip install mujoco-py pip install -e '.[all]' --no-cache-dir
 ```
 
-After that I have to downgrade pyglet used by classic control task to 1.2.4 or the SpaceInvader cannot be rendered
+- After that I have to downgrade pyglet used by classic control task to 1.2.4 or the SpaceInvader cannot be rendered
 
-optional: Install tensorflow with GPU support for python 3.6    
+- optional: Install tensorflow with GPU support for python 3.6    
 ``` bash
 pip install tensorflow-gpu
 
