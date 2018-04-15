@@ -51,11 +51,3 @@ scipy>=0.18.0 \
 sphinx \
 sphinx_rtd_theme \
 numpydoc
-
-
-
-# Delay moving in the entire code until the very end.
-ENTRYPOINT ["/mujoco_py/vendor/Xdummy-entrypoint"]
-CMD ["pytest"]
-COPY . /mujoco_py
-RUN python setup.py install

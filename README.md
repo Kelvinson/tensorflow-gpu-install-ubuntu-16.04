@@ -8,7 +8,13 @@ After following these instructions you'll have:
 1. Ubuntu 16.04. 
 2. Cuda 9.0 drivers installed.
 3. A conda environment with python 3.6.    
-4. The latest tensorflow version with gpu support.   
+4. The gym environment with Mujoco and Robotics fully integrated   
+---
+### Installing OS Before it starts
+Ususally I will encounter kinds of GRUB problems and I choose to reinstall the Windows and Ubuntu totally.
+1. first I use windows installer disk to reinstall windows, I can choose to delete the two disks (windows , ubuntu) when I choose where to install windows.
+2. After I install windows, write the 16.04.3 image(16.04.3 works better for me than 16.04.4) to disk and select the boot sequence from the disk and install ubuntu, on the partitioning I refer [here](https://jingyan.baidu.com/article/fb48e8be1480486e622e14ed.html)-that is 200M/8G/50G/the remaining part
+3. sudo apt-get autoremove linux-image-多余的内核版本 (to avoid future errors of gzip: no space left on device)
 
 ---   
 ### Step 0: Noveau drivers     
@@ -46,7 +52,20 @@ Add the nouveau.modeset=0 parameter to the end of the linux line ... Then press 
 sudo apt-get purge nvidia*  
 sudo reboot   
 ```   
-
+**my option**
+Neither option 1 or options2 works for me, I refer the Nvidia docs and do the following:
+0. After you boot the linux system and are sitting at a login prompt, press ctrl+alt+F4(not CTRL+ALT+F1) to get to a terminal screen.  Login via this terminal screen.
+1.	Create a file at /etc/modprobe.d/blacklist-nouveau.conf with the following contents:
+    ```
+    blacklist nouveau
+	options nouveau modeset=0
+    ```
+3.	Regenerate the kernel initramfs:$ sudo update-initramfs -u
+4. reboot  
+5. to see whether nouveau is blacklisted
+    ```
+    lsmod | grep nouveau
+    ```
 ---   
 ## Installation steps     
 
@@ -55,12 +74,16 @@ sudo reboot
 ``` bash 
 sudo apt-get update
 ```
-   
-1. Install apt-get deps  
+
+1. Installing kinds of building essentials
+1.1 Install apt-get deps  
 ``` bash
 sudo apt-get install openjdk-8-jdk git python-dev python3-dev python-numpy python3-numpy build-essential python-pip python3-pip python-virtualenv swig python-wheel libcurl3-dev   
 ```
-
+1.2 Install essentials for gym environment:
+```bash
+sudo apt-get install -y python-numpy python-dev cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev python-opengl libboost-all-dev libsdl2-dev swig
+```
 2. install nvidia drivers 
 ``` bash
 # The 16.04 installer works with 16.10.
@@ -135,33 +158,65 @@ bash Miniconda3-latest-Linux-x86_64.sh
 source ~/.bashrc
 ```   
 
-6. Create conda env to install tf   
+6. Create conda env to install gym 
 ``` bash
-conda create -n tensorflow
+conda create -n gym python=3.5.2
 
 # press y a few times 
 ```   
 
 7. Activate env   
 ``` bash
-source activate tensorflow   
+source activate gym
 ```
 
-
-Add these two lines to the end of ~/.bashrc:
+8.1 Install mujuco(do it as the official docs said, it is easy)
+Note to Add these two lines to the end of ~/.bashrc:
+```
 export LD_LIBRARY_PATH="/home/kelvinson/.mujoco/mjpro150/bin:${LD_LIBRARY_PATH}"
 export LD_LIBRARY_PATH="/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}"
+```
+8.2 Intall the esentials of mujoco-py
+# clone gym to local: inside gym env, pip install --ignore-installed pip (required by gym )
+# follow the [docker file](https://github.com/openai/mujoco-py/blob/master/Dockerfile)to install perquisites of mujoco-py. (I have simplified it to the file build_dependencies in the main repo)
+# now let's install the gym env:
+```bash
+ LD_LIBRARY_PATH=$HOME/.mujoco/mjpro150/bin pip install mujoco-py pip install -e '.[all]' --no-cache-dir
+```
 
+After that I have to downgrade pyglet used by classic control task to 1.2.4 or the SpaceInvader cannot be rendered
 
-8. Install tensorflow with GPU support for python 3.6    
+optional: Install tensorflow with GPU support for python 3.6    
 ``` bash
 pip install tensorflow-gpu
 
 # If the above fails, try the part below
 # pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.2.0-cp36-cp36m-linux_x86_64.whl
 ```   
+9. Test of install
 
-9. Test tf install   
+9.1 Test of gym install 
+Note depends on your situation, optionlly I have to downgrade the pyglet version to 1.2.4 to use the control env
+```
+pip uninstall pyglet
+pip install -I pyglet==1.2.4
+```
+when run mujuco and robotics environment, I know there is a bug about omesa that has something to do with OpenGL on my ubuntu so I have to append **LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so** when I run a python program. Thus it becomes:
+```
+LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so python YOUR_PROGRAM
+```
+Also when running the gym environment you have to put **env.close()**at the end of the game, or the error "NoneType" object is not iterable will occur.
+
+```python
+import gym
+env = gym.make('LunarLander-v2')
+for i in range(100):
+    env.reset()
+    env.render()
+env.close()
+```
+
+9.2 Test tf install 
 ``` bash
 # start python shell   
 python
@@ -176,3 +231,4 @@ hello = tf.constant('Hello, TensorFlow!')
 sess = tf.Session()
 print(sess.run(hello))
 ```  
+10. You can choose to install Dart and Dartsim or optionally Gazebo to enrich your simulation tools. However, I doubt there is a bug about OpenGL rendering conflicts with Nvidia drivers that cause my machine to crash(cannot login in again after resstart) So I choose not to install them temporailly.
