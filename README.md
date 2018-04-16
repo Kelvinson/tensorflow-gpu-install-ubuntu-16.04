@@ -1,4 +1,10 @@
-# Tensorflow GPU install on ubuntu 16.04    
+**Note** After revised this blog I have found many other blogs or tutorials on this:
+1. useful in the removing old kernels[this](http://christopher5106.github.io/nvidia/2016/12/30/commands-nvidia-install-ubuntu-16-04.html)
+2. trouble shooting part is useful[](http://queirozf.com/entries/installing-cuda-tk-and-tensorflow-on-a-clean-ubuntu-16-04-install#the-distribution-provided-pre-install-script-failed-are-you-sure-you-want-to-continue)
+3. Dell XPS is somewhat like my Inspiron 15 7000 laptop[](https://gist.github.com/whizzzkid/37c0d365f1c7aa555885d102ec61c048)
+4. Read Carefully from the official blog[](https://devtalk.nvidia.com/default/topic/1023490/suffering-on-cuda-amp-nvidia-driver-installation-on-ubuntu-16-04-3/)
+5. 
+# Nvidia CUDA and Gym(Dart, Pybullet planned) install on ubuntu 16.04    
 
 These instructions are intended to set up a deep learning environment for GPU-powered tensorflow.      
 [See here for pytorch GPU install instructions](https://github.com/williamFalcon/pytorch-gpu-install)
@@ -232,3 +238,7 @@ sess = tf.Session()
 print(sess.run(hello))
 ```  
 10. You can choose to install Dart and Dartsim or optionally Gazebo to enrich your simulation tools. However, I doubt there is a bug about OpenGL rendering conflicts with Nvidia drivers that cause my machine to crash(cannot login in again after resstart) So I choose not to install them temporailly.
+
+11. More about Simulators
+a. About the benchmarking of the 4 simulators(Dart, Bullet, ODE) see here[]()
+b. Use cases mentioned by Pybullet: [Simulation to domain Adaptation](https://sites.google.com/view/graspgan) [Neural Task Programming:Learning to Generalize Across Hierarchical Tasks](https://stanfordvl.github.io/ntp/?utm_content=buffer8b1fc) [OpenAI Roboschool](https://blog.openai.com/roboschool/)
