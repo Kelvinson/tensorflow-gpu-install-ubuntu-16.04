@@ -1,11 +1,11 @@
 **Note** After revised this blog I have found many other blogs or tutorials on this:
 1. useful in the removing old kernels[this](http://christopher5106.github.io/nvidia/2016/12/30/commands-nvidia-install-ubuntu-16-04.html)
-2. trouble shooting part is useful[](http://queirozf.com/entries/installing-cuda-tk-and-tensorflow-on-a-clean-ubuntu-16-04-install#the-distribution-provided-pre-install-script-failed-are-you-sure-you-want-to-continue)
-3. Dell XPS is somewhat like my Inspiron 15 7000 laptop[](https://gist.github.com/whizzzkid/37c0d365f1c7aa555885d102ec61c048)
-4. Read Carefully from the official blog[](https://devtalk.nvidia.com/default/topic/1023490/suffering-on-cuda-amp-nvidia-driver-installation-on-ubuntu-16-04-3/)
-5. 
-# Nvidia CUDA and Gym(Dart, Pybullet planned) install on ubuntu 16.04    
+2. trouble shooting part is useful [this](http://queirozf.com/entries/installing-cuda-tk-and-tensorflow-on-a-clean-ubuntu-16-04-install#the-distribution-provided-pre-install-script-failed-are-you-sure-you-want-to-continue)
+3. Dell XPS is somewhat like my Inspiron 15 7000 laptop [this](https://gist.github.com/whizzzkid/37c0d365f1c7aa555885d102ec61c048)
+4. Read Carefully from the official blog[this](https://devtalk.nvidia.com/default/topic/1023490/suffering-on-cuda-amp-nvidia-driver-installation-on-ubuntu-16-04-3/)
+5. **Most important and promissing one** [here](https://www.pugetsystems.com/labs/hpc/The-Best-Way-To-Install-Ubuntu-16-04-with-NVIDIA-Drivers-and-CUDA-1097/)
 
+# Nvidia CUDA and Gym(Dart, Pybullet planned) install on ubuntu 16.04    
 These instructions are intended to set up a deep learning environment for GPU-powered tensorflow.      
 [See here for pytorch GPU install instructions](https://github.com/williamFalcon/pytorch-gpu-install)
 
