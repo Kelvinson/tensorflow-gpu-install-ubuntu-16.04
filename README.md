@@ -17,7 +17,39 @@
 16. **Maybe** [this](https://github.com/sonic1sonic/Installation-Guide-for-NVIDIA-Driver-and-CUDA)
 
 
+---
+**Clarify about the gcc version** the official document says 5.3.1 is needed for ubuntu 16.04 however the 5.4 is installed 
+it not true. 
 
+**How to run text level 3*
+
+8
+down vote
+Instead of text use runlevel 3:
+
+GRUB_CMDLINE_LINUX="3"
+
+# To remove all the fancy graphics you need to get rid of `splash`.
+GRUB_CMDLINE_LINUX_DEFAULT=”quiet”
+
+# Uncomment to disable graphical terminal (grub-pc only) 
+GRUB_TERMINAL=console
+Then update-grub and reboot.
+
+But you really only need GRUB_CMDLINE_LINUX="3". For quick test hit ESC during booting to get into the grub boot menu. Then press e and find the line which specifies kernel and add 3 at the end:
+
+ linux /vmlinuz root=/dev/mapper/ubuntu ro 3
+Boot it with CTRL+x
+
+Ideally I also want to be able to start GUI by typig a command.
+
+One of these:
+
+$ sudo telinit 5
+$ sudo service lightdm restart
+$ sudo systemctl start lightdm
+Tested on Ubuntu 16.04.1 LTS.
+---
 # Nvidia CUDA and Gym(Dart, Pybullet planned) install on ubuntu 16.04    
 These instructions are intended to set up a deep learning environment for GPU-powered tensorflow.      
 [See here for pytorch GPU install instructions](https://github.com/williamFalcon/pytorch-gpu-install)
