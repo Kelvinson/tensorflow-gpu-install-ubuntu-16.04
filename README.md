@@ -12,7 +12,9 @@
 11. [this](https://zhuanlan.zhihu.com/p/25193943)
 12. **verbose** [don't know whether is useful](https://zhuanlan.zhihu.com/p/27794010)
 13. **seems useful**[this](https://zhuanlan.zhihu.com/p/35670162)
-14 **maybe useful for bumblebee**[this](https://www.linuxidc.com/Linux/2017-02/140910.htm)
+14. **maybe useful for bumblebee**[this](https://www.linuxidc.com/Linux/2017-02/140910.htm)
+15. **MOre** [this](https://github.com/mananpal1997/CUDA-Instructions)
+16. **Maybe** [this](https://github.com/sonic1sonic/Installation-Guide-for-NVIDIA-Driver-and-CUDA)
 
 
 
