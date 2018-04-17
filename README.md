@@ -5,6 +5,17 @@
 4. Read Carefully from the official blog[this](https://devtalk.nvidia.com/default/topic/1023490/suffering-on-cuda-amp-nvidia-driver-installation-on-ubuntu-16-04-3/)
 5. **Most important and promissing one** [here](https://www.pugetsystems.com/labs/hpc/The-Best-Way-To-Install-Ubuntu-16-04-with-NVIDIA-Drivers-and-CUDA-1097/)
 6. **Linuxidc blog** [this](www.linuxidc.com/Linux/2017-01/139319.htm)
+7. **Nvidia Blog**[this](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#runfile)
+8. **If using Optimus**[this](https://www.pcsuggest.com/nvidia-optimus-ubuntu/)
+9. **Somewhat useful**[this](https://www.cnblogs.com/sp-li/p/7680526.html)
+10. **-no-opengl-files** when install cuda [this](https://blog.csdn.net/ghw15221836342/article/details/79571559)
+11. [this](https://zhuanlan.zhihu.com/p/25193943)
+12. **verbose** [don't know whether is useful](https://zhuanlan.zhihu.com/p/27794010)
+13. **seems useful**[this](https://zhuanlan.zhihu.com/p/35670162)
+14 **maybe useful for bumblebee**[this](https://www.linuxidc.com/Linux/2017-02/140910.htm)
+
+
+
 # Nvidia CUDA and Gym(Dart, Pybullet planned) install on ubuntu 16.04    
 These instructions are intended to set up a deep learning environment for GPU-powered tensorflow.      
 [See here for pytorch GPU install instructions](https://github.com/williamFalcon/pytorch-gpu-install)
