@@ -4,7 +4,7 @@
 3. Dell XPS is somewhat like my Inspiron 15 7000 laptop [this](https://gist.github.com/whizzzkid/37c0d365f1c7aa555885d102ec61c048)
 4. Read Carefully from the official blog[this](https://devtalk.nvidia.com/default/topic/1023490/suffering-on-cuda-amp-nvidia-driver-installation-on-ubuntu-16-04-3/)
 5. **Most important and promissing one** [here](https://www.pugetsystems.com/labs/hpc/The-Best-Way-To-Install-Ubuntu-16-04-with-NVIDIA-Drivers-and-CUDA-1097/)
-
+6. **Linuxidc blog** [this](www.linuxidc.com/Linux/2017-01/139319.htm)
 # Nvidia CUDA and Gym(Dart, Pybullet planned) install on ubuntu 16.04    
 These instructions are intended to set up a deep learning environment for GPU-powered tensorflow.      
 [See here for pytorch GPU install instructions](https://github.com/williamFalcon/pytorch-gpu-install)
@@ -237,6 +237,11 @@ hello = tf.constant('Hello, TensorFlow!')
 sess = tf.Session()
 print(sess.run(hello))
 ```  
+# other tools to install: kdictionary
+```
+sudo snap install kdictionary
+```
+
 10. You can choose to install Dart and Dartsim or optionally Gazebo to enrich your simulation tools. However, I doubt there is a bug about OpenGL rendering conflicts with Nvidia drivers that cause my machine to crash(cannot login in again after resstart) So I choose not to install them temporailly.
 
 11. More about Simulators
