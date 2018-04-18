@@ -119,13 +119,55 @@ nvidia-smi
 # you should see a list of gpus printed    
 # if not, the previous steps failed.   
 ``` 
+---
+**My Way to install the driver**
+1. download the NVIDIA-Linux 390 version driver
+2. logout the desktop and CTRL+ALT+Fn4 execute:
+```bash
+# I don't know which is helpful and excute both
+sudo sudo service lightdm stop
+sudo systemctl stop lightdm
+```
+3. run the driver with --no-opengl-files **this is important**
+4. reboot 
+5. In order not to let the installation of cuda destroy the desktop, I logout and do (2) to install cuda, remember to add PATH variable and ldconfig as like [here](https://gist.github.com/Kelvinson/b9a6124ec1617d52e86ae8975e118277#install-cuda)
+```bash
+sudo bash -c "echo /usr/local/cuda/lib64/ > /etc/ld.so.conf.d/cuda.conf"
+sudo ldconfig
+```
+6. Then I reboot to see whether I can log into the desktop, It's OK! Then I installed the 3 updates on cuda-9.1
+7. The I have to install cudnn
+```bash
+# do this as WilliamFalcon's blog 
+wget https://s3.amazonaws.com/open-source-william-falcon/cudnn-9.0-linux-x64-v7.1.tgz  
+sudo tar -xzvf cudnn-9.0-linux-x64-v7.1.tgz  
+# the -P flag is important becuase if not use -P, error "libcudnn.so.7 is not a valid link" will occur
+sudo cp -P  cuda/include/cudnn.h /usr/local/cuda/include # -p retains the link
+sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64 
+sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+# Add these lines to end of ~/.bashrc:
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
+export CUDA_HOME=/usr/local/cuda
+# Reload bashrc
+source ~/.bashrc
+```
+8. also remember to ldconfig
+```
+sudo ldconfig
+```
+
+Note: 
+1. Because at first I do not copy with the -P flag, there comes with the link error. 
+2. Using the above way to install cudnn, there is no cudnn examples to verify the cudnn installation, I tried to install the debian verson of cudnn exmples but comes the error "dependencies unmet", it requires install deb version of cudnn first. So I have to manully uninstall the cudnn: sudo apt-get autoremove cudnn_7-1.docs.
+3. In this part I leant a lot from [gist](https://gist.github.com/Kelvinson/b9a6124ec1617d52e86ae8975e118277#install-cuda) from wangruohui 
+---
 
 3. Install cudnn   
 ``` bash
 wget https://s3.amazonaws.com/open-source-william-falcon/cudnn-9.0-linux-x64-v7.1.tgz  
 sudo tar -xzvf cudnn-9.0-linux-x64-v7.1.tgz  
-sudo cp cuda/include/cudnn.h /usr/local/cuda/include
-sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+sudo cp -P cuda/include/cudnn.h /usr/local/cuda/include
+sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 ```    
 
@@ -192,13 +234,15 @@ follow the [docker file](https://github.com/openai/mujoco-py/blob/master/Dockerf
 
 - After that I have to downgrade pyglet used by classic control task to 1.2.4 or the SpaceInvader cannot be rendered
 
-- optional: Install tensorflow with GPU support for python 3.6    
+- optional: Install tensorflow with GPU support for python 3.5
 ``` bash
 pip install tensorflow-gpu
 
 # If the above fails, try the part below
 # pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.2.0-cp36-cp36m-linux_x86_64.whl
+
 ```   
+** However, becasue I install the the 9.1/7.1 cuda/cudnn, because the pip and the wheel file is prebuilt with cuda 9.0 and cudnn 7.1 I have to install tensorflow from building source. In the "./configure" sesssion, select 'no' if you are not familiar with those options, like 'MPI' 'TensorRT'. I select them at first and bazel build fail. I then bazel clean and reconfigure it with the most simple configuration and passed. 
 9. Test of install
 
 9.1 Test of gym install 
