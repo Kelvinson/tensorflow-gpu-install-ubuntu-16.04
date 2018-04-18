@@ -200,11 +200,25 @@ source ~/.bashrc
 ```
 sudo ldconfig
 ```
+9. Remeber to do the post installation things as [here](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions) includeing persistance
+```bash
+/usr/bin/nvidia-persistenced --verbose
+```
 
 Note: 
 1. Because at first I do not copy with the -P flag, there comes with the link error. 
 2. Using the above way to install cudnn, there is no cudnn examples to verify the cudnn installation, I tried to install the debian verson of cudnn exmples but comes the error "dependencies unmet", it requires install deb version of cudnn first. So I have to manully uninstall the cudnn: sudo apt-get autoremove cudnn_7-1.docs.
 3. In this part I leant a lot from [gist](https://gist.github.com/Kelvinson/b9a6124ec1617d52e86ae8975e118277#install-cuda) from wangruohui 
+4. After that I tested by installing GPU pytorch and other scripts, all seems right. But I found that accidently the Nvidia X server settings pops up and gives the error "You don't appear to be using the Nvidia X server. Please edit your configuration file (just run 'nvidia-xconfig') and restart the X server. 
+
+I can only to do it and the /etc/X11/xorg.conf file is created. Now i have to risk to restart to see what will happen.(lol)
+---
+**More about Ubuntu**
+1. Keep the external monitor turn on when close the lid of the laptop:
+```bash
+# /etc/UPower/UPower.conf, and change ignoreLid to true.
+ignoredLid=true
+
 ---
 
 3. Install cudnn   
