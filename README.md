@@ -218,7 +218,7 @@ I can only to do it and the /etc/X11/xorg.conf file is created. Now i have to ri
 ```bash
 # /etc/UPower/UPower.conf, and change ignoreLid to true.
 ignoredLid=true
-
+```
 ---
 
 3. Install cudnn   
