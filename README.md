@@ -1,4 +1,6 @@
 **Note** After revised this blog I have found many other blogs or tutorials on this:
+**CUDA Official Document** [here](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions)
+**CUDNN official Document** [here](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#install-linux)
 1. useful in the removing old kernels[this](http://christopher5106.github.io/nvidia/2016/12/30/commands-nvidia-install-ubuntu-16-04.html)
 2. trouble shooting part is useful [this](http://queirozf.com/entries/installing-cuda-tk-and-tensorflow-on-a-clean-ubuntu-16-04-install#the-distribution-provided-pre-install-script-failed-are-you-sure-you-want-to-continue)
 3. Dell XPS is somewhat like my Inspiron 15 7000 laptop [this](https://gist.github.com/whizzzkid/37c0d365f1c7aa555885d102ec61c048)
