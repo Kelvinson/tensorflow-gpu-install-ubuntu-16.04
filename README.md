@@ -1,4 +1,5 @@
-**Update** Recently I am building my own deep learning righ and I have my first NVIDIA 1080Ti GPU. I refered [Slav's blog](https://blog.slavv.com/the-1700-great-deep-learning-box-assembly-setup-and-benchmarks-148c5ebe6415) and [Waydegg's blog](http://forums.fast.ai/t/a-guide-for-creating-a-server-for-deep-learning-assembly-server-library-setup/19082) to build my machine.
+**Update** Recently I am building my own deep learning righ and I have my first NVIDIA 1080Ti GPU. I refered [Slav's blog](https://blog.slavv.com/the-1700-great-deep-learning-box-assembly-setup-and-benchmarks-148c5ebe6415) with [pcpartpicker list](https://pcpartpicker.com/list/Xp3vjy) and [Waydegg's blog](http://forums.fast.ai/t/a-guide-for-creating-a-server-for-deep-learning-assembly-server-library-setup/19082) with [pcpartpicker list](https://pcpartpicker.com/list/T6wHjc) to build my machine.
+
 **Note** After revised this blog I have found many other blogs or tutorials on this:
 **CUDA Official Document** [here](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions)
 **CUDNN official Document** [here](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#install-linux)
