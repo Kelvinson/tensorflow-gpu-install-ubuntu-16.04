@@ -26,3 +26,11 @@ INFO: Elapsed time: 2839.656s, Critical Path: 172.22s
 INFO: 3492 processes: 3492 local.
 FAILED: Build did NOT complete successfully
 ```
+***whoops** Finally I found that I installed the wrong cudnn (for ppci64 not the regular one 64 bit) then I downloaded the right one cudnn-9.2-linux-x64-v7.1 and unzip to the cuda directory. And finally it succeeds!
+```bash
+Target //tensorflow/tools/pip_package:build_pip_package up-to-date:
+  bazel-bin/tensorflow/tools/pip_package/build_pip_package
+INFO: Elapsed time: 4665.159s, Critical Path: 150.65s
+INFO: 7837 processes: 7837 local.
+INFO: Build completed successfully, 10239 total actions
+```
