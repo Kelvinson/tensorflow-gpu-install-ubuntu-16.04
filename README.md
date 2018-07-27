@@ -42,3 +42,4 @@ INFO: Elapsed time: 4665.159s, Critical Path: 150.65s
 INFO: 7837 processes: 7837 local.
 INFO: Build completed successfully, 10239 total actions
 ```
+So the safe way is to use isntall debfile for cuDNN and thus you can verify the installation by running mnistCUDNN example.
