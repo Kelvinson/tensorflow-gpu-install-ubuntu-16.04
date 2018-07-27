@@ -14,7 +14,7 @@ sudo ln -s /usr/lib/x86_64-linux-gnu/libnccl.so.2 /usr/local/cuda/lib/libnccl.so
 sudo ln -s /usr/include/nccl.h /usr/local/cuda/include/nccl.h
 ```
 - second bug is cannot find libcdnn.so.7.
-"""bash
+```bash
 ERROR: /home/kelvinson/Downloads/tensorflow/tensorflow/BUILD:489:1: Linking of rule '//tensorflow:libtensorflow_framework.so' failed (Exit 1)
 /usr/bin/ld: skipping incompatible bazel-out/host/bin/_solib_local/_U@local_Uconfig_Ucuda_S_Scuda_Ccudnn___Uexternal_Slocal_Uconfig_Ucuda_Scuda_Scuda_Slib/libcudnn.so.7 when searching for -l:libcudnn.so.7
 /usr/bin/ld: skipping incompatible bazel-out/host/bin/_solib_local/_U@local_Uconfig_Ucuda_S_Scuda_Ccudnn___Uexternal_Slocal_Uconfig_Ucuda_Scuda_Scuda_Slib/libcudnn.so.7 when searching for -l:libcudnn.so.7
@@ -25,4 +25,4 @@ Use --verbose_failures to see the command lines of failed build steps.
 INFO: Elapsed time: 2839.656s, Critical Path: 172.22s
 INFO: 3492 processes: 3492 local.
 FAILED: Build did NOT complete successfully
-"""
+```
