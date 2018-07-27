@@ -26,7 +26,7 @@ INFO: Elapsed time: 2839.656s, Critical Path: 172.22s
 INFO: 3492 processes: 3492 local.
 FAILED: Build did NOT complete successfully
 ```
-***whoops** Finally I found that I installed the wrong cudnn (for ppci64 not the regular one 64 bit) then I downloaded the right one cudnn-9.2-linux-x64-v7.1 and unzip to the cuda directory.
+***whoops** Finally I found that I installed the wrong cudnn (ppc64le version Power8/Power9 for  not the regular one 64 bit) then I downloaded the right one cudnn-9.2-linux-x64-v7.1 and unzip to the cuda directory.
 ```bash
 tar xvzf cudnn-9.2-linux-x64-v7.1.tgz
 sudo cp -P cuda/include/cudnn.h /usr/local/cuda/include
