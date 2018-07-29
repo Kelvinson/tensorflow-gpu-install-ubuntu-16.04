@@ -1,4 +1,4 @@
-0.I install Ubuntu in the UEFI mode rather than legacy mode. It's cool!
+0. I install Ubuntu in the UEFI mode rather than legacy mode. It's cool!
 1. Just install the cuda using the distribution-specific method, i.e download the deb file for ubuntu and go all the way. I encounter no problem this way.
 2. install gym, mujoco_py. I encounter the problem of "fatal error: GL/glew.h: No such file or directory" and reinstall mujoco_py with "LD_LIBRARY_PATH=$HOME/.mujoco/mjpro150/bin pip -I install mujoco-py" didn't help. Solution of the issue [180](https://github.com/openai/mujoco-py/issues/180) helped me.
 ```bash
