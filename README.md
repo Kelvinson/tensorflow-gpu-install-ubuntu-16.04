@@ -44,3 +44,14 @@ INFO: 7837 processes: 7837 local.
 INFO: Build completed successfully, 10239 total actions
 ```
 So the safe way is to use isntall debfile for cuDNN and thus you can verify the installation by running mnistCUDNN example.
+4. Besides the problems in the OLD-Readme.md, I encountered the problems below:
+```bash
+Creating window glfw
+ERROR: GLEW initalization error: Missing GL version
+
+Press Enter to exit ...Killed
+```
+The solution is preload the GLEW lib manully, add the following line to the .bashrc file :
+```bash
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so:/usr/lib/nvidia-396/libGL.so
+```
