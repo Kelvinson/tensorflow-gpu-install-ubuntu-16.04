@@ -55,3 +55,22 @@ The solution is preload the GLEW lib manully, add the following line to the .bas
 ```bash
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so:/usr/lib/nvidia-396/libGL.so
 ```
+5. In order to setup a remote ssh access, I refered the tutorial [here](https://dev.to/zduey/how-to-set-up-an-ssh-server-on-a-home-computer) and it worked. Also to setup access remote jupyter notebook, first configure as below:
+```bash
+# Create a ~/.jupyter/jupyter_notebook_config.py with settings
+jupyter notebook --generate-config
+jupyter notebook --port=8888 --NotebookApp.token='' # Start it
+```
+if want the server to start jupyter on startup, we will use crontab to do this, which we can edit by running "crontab -e" . Then add the following after the last line in the crontab file:
+```bash
+# Replace 'path-to-jupyter' with the actual path to the jupyter
+# installation (run 'which jupyter' if you don't know it). Also
+# 'path-to-dir' should be the dir where your deep learning notebooks 
+# would reside (I use ~/DL/).
+@reboot path-to-jupyter notebook --no-browser --port=8888 --NotebookApp.token='' --notebook-dir path-to-dir &
+```
+then you can test it in the remote client by the following:
+```bash
+# Replace user@host with your server user and ip.
+ssh -N -f -L localhost:8888:localhost:8888 user@host
+```
