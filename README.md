@@ -74,12 +74,7 @@ then you can test it in the remote client by the following:
 # Replace user@host with your server user and ip.
 ssh -N -f -L localhost:8888:localhost:8888 user@host
 ```
-Note that in the above command, the first localhost:8888 stands for the local port that connects to the server and the second localhost:8888 is the port of the server that we map to our local port. So you can change the mapped local port by change the first number. Moreover, the argument **-f** stands for :
-
---
-Requests ssh to go to background just before command execution. This is useful if ssh is going to ask for passwords or passphrases, but the user wants it in the background.
--- 
-so even you close the shell, the ssh connection is still alive. If you want to close it, you have to kill the corrsponding pid number by:
+Note that in the above command, the first localhost:8888 stands for the local port that connects to the server and the second localhost:8888 is the port of the server that we map to our local port. So you can change the mapped local port by change the first number. Moreover, the argument **-f** stands for **Requests ssh to go to background just before command execution. This is useful if ssh is going to ask for passwords or passphrases, but the user wants it in the background.** so even you close the shell, the ssh connection is still alive. If you want to close it, you have to kill the corrsponding pid number by:
 ```bash
 ps aux | grep the_local_port_number
 kill the_local_port_number
