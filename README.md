@@ -79,4 +79,5 @@ Note that in the above command, the first localhost:8888 stands for the local po
 ps aux | grep the_local_port_number
 kill the_local_port_number
 ```
+More detailed info [here](https://stackoverflow.com/questions/9447226/how-to-close-this-ssh-tunnel)
 
